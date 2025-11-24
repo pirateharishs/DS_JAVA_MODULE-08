@@ -55,7 +55,7 @@ public class HashSetToArrayList {
 ```
 ## Output:
 
-<img width="678" height="428" alt="image" src="https://github.com/user-attachments/assets/f2c1eea5-e2ae-4934-84bb-629e5c23b3a5" />
+<img width="588" height="611" alt="image" src="https://github.com/user-attachments/assets/7c73d82d-8df2-4448-9637-9638cc91f379" />
 
 ## Result:
 The program successfully converts a collection of distinct integers stored in a HashSet into an ArrayList
@@ -121,7 +121,7 @@ public class ArrayToTreeSet {
 
 ## Output:
 
-<img width="620" height="280" alt="image" src="https://github.com/user-attachments/assets/5dadc347-a6b4-45f9-ab32-b40c6f16dcdf" />
+<img width="694" height="483" alt="image" src="https://github.com/user-attachments/assets/40b4378f-1f4d-4337-ae72-9d15f66b2723" />
 
 ## Result:
 The program successfully adds elements from an array into a TreeSet.
@@ -172,7 +172,7 @@ public class FillArrayExample {
 
 ## Output:
 
-<img width="821" height="98" alt="image" src="https://github.com/user-attachments/assets/0678a3dc-fbf3-44aa-aaf2-ce02e7ed1ab9" />
+<img width="790" height="189" alt="image" src="https://github.com/user-attachments/assets/7b986008-2b6e-4d79-bddb-bd52d3e2a36f" />
 
 ## Result:
 The program successfully fills the first 10 elements of the array with the constant value 5 using the Arrays.fill() method.
@@ -245,7 +245,7 @@ public class FirstUniqueNumber {
 
 ## Output:
 
-<img width="597" height="345" alt="image" src="https://github.com/user-attachments/assets/812d05a8-f1f8-48fc-b2cd-aac55d89477e" />
+<img width="767" height="563" alt="image" src="https://github.com/user-attachments/assets/c64e76a4-ba8d-4ab4-b7c9-7a47f5e9176b" />
 
 ## Result:
 The program successfully tracks and returns the first unique number at any point in the integer stream using a LinkedHashMap.
@@ -316,7 +316,7 @@ public class TreeMapValueSearch {
 ```
 ## Output:
 
-<img width="477" height="322" alt="image" src="https://github.com/user-attachments/assets/ecde8a50-665a-488c-a4c6-02892b78cf3c" />
+<img width="970" height="664" alt="image" src="https://github.com/user-attachments/assets/cdbab398-2834-42ce-9b3e-8d24c188fd1d" />
 
 ## Result:
 Thus, the program successfully checks whether a specified value exists in a TreeMap using the containsValue() method.
