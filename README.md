@@ -1,321 +1,196 @@
-## Ex11 Convert HashSet to ArrayList in Java
-## AIM:
-To convert a collection of distinct integers stored in a HashSet into an ArrayList and display its contents.
+## 1.Write a program to perform postorder traversal (Left → Right → Root) of a binary tree built from level order input.
+### Input Format:
+###   First line: N
+###   Second line: N space-separated integers
+### Output Format:
+###   Postorder traversal as space-separated values
 
-## Algorithm:
+### program:
 
-1.Start and create an empty HashSet.
-
-2.Insert all the required integers into the HashSet.
-
-3.Create an ArrayList and pass the HashSet to its constructor.
-
-4.Store all elements of the HashSet into the ArrayList.
-
-5.Display the elements of the ArrayList.
-
-## Program:
 ```
-/*
-Program to To convert a collection of distinct integers stored in a HashSet into an ArrayList and display its contents.
-Developed by: HARISH S
-Register Number: 212223230071
-*/
 import java.util.*;
 
-public class HashSetToArrayList {
-    public static void main(String[] args) {
-
-        // Create a HashSet of integers
-        HashSet<Integer> numberSet = new HashSet<>();
-
-        Scanner sc = new Scanner(System.in);
-        System.out.print("Enter how many numbers you want to add: ");
-        int n = sc.nextInt();
-
-        // Taking input from the user
-        System.out.println("Enter " + n + " distinct integers:");
-        for (int i = 0; i < n; i++) {
-            numberSet.add(sc.nextInt());
-        }
-
-        // Convert HashSet to ArrayList
-        ArrayList<Integer> numberList = new ArrayList<>(numberSet);
-
-        // Display the ArrayList
-        System.out.println("\nArrayList contents:");
-        for (int num : numberList) {
-            System.out.println(num);
-        }
-
-        sc.close();
+class Node {
+    int data;
+    Node left, right;
+    Node(int data) {
+        this.data = data;
     }
 }
-```
-## Output:
 
-<img width="588" height="611" alt="image" src="https://github.com/user-attachments/assets/7c73d82d-8df2-4448-9637-9638cc91f379" />
+public class Main {
 
-## Result:
-The program successfully converts a collection of distinct integers stored in a HashSet into an ArrayList
+    static Node buildTree(int[] arr) {
+        if (arr.length == 0) return null;
 
-## Ex12 Add Elements from an Array into a TreeSet
+        Node root = new Node(arr[0]);
+        Queue<Node> q = new LinkedList<>();
+        q.add(root);
 
-## AIM:
-To write a Java program that adds elements from an array into a TreeSet and displays the elements in sorted order.
+        int i = 1;
+        while (!q.isEmpty() && i < arr.length) {
+            Node curr = q.poll();
 
-## Algorithm:
+            curr.left = new Node(arr[i++]);
+            q.add(curr.left);
+            if (i >= arr.length) break;
 
-1.Start and create an integer array.
+            curr.right = new Node(arr[i++]);
+            q.add(curr.right);
+        }
+        return root;
+    }
 
-2.Create an empty TreeSet.
+    static void postorder(Node root) {
+        if (root == null) return;
+        postorder(root.left);
+        postorder(root.right);
+        System.out.print(root.data + " ");
+    }
 
-3.Traverse the array using a loop.
-
-4.Insert each array element into the TreeSet.
-
-5.Display the TreeSet (elements appear in sorted order automatically).
-
-## Program:
-
-```
-/*
-Program that adds elements from an array into a TreeSet and displays the elements in sorted order.
-
-*/
-import java.util.*;
-
-public class ArrayToTreeSet {
     public static void main(String[] args) {
-
         Scanner sc = new Scanner(System.in);
-
-        // Take array size from user
-        System.out.print("Enter number of elements: ");
         int n = sc.nextInt();
-
         int[] arr = new int[n];
 
-        // Input array elements
-        System.out.println("Enter " + n + " integers:");
-        for (int i = 0; i < n; i++) {
+        for (int i = 0; i < n; i++)
             arr[i] = sc.nextInt();
-        }
 
-        // Create a TreeSet
-        TreeSet<Integer> set = new TreeSet<>();
-
-        // Add array elements to TreeSet
-        for (int num : arr) {
-            set.add(num);
-        }
-
-        // Display sorted elements
-        System.out.println("Elements in sorted order (TreeSet): " + set);
-
-        sc.close();
+        Node root = buildTree(arr);
+        postorder(root);
     }
 }
-```
-
-## Output:
-
-<img width="694" height="483" alt="image" src="https://github.com/user-attachments/assets/40b4378f-1f4d-4337-ae72-9d15f66b2723" />
-
-## Result:
-The program successfully adds elements from an array into a TreeSet.
-
-## Ex13 Fill the First 10 Elements of an Array with a Constant using Arrays.fill()
-
-## AIM:
-To write a Java program that fills the first 10 elements of an array with a constant value using the Arrays.fill() method.
-
-## Algorithm:
-
-1.Create an integer array of desired size.
-
-2.Choose the constant value to fill.
-
-3.Use Arrays.fill(array, startIndex, endIndex, value) to fill the first 10 elements.
-
-4.Traverse the array (optional) to verify or display elements.
-
-5.Print the array contents.
-
-## Program:
 
 ```
-/*
-Program to FILL the first 10 elements of an array with a constant value using the Arrays.fill() method.
+### output:
+<img width="907" height="190" alt="image" src="https://github.com/user-attachments/assets/023ec5e2-901f-4137-867a-e78ee36023f9" />
 
-*/
-import java.util.Arrays;
 
-public class FillArrayExample {
-    public static void main(String[] args) {
+## 2.You are given a list of node values to be inserted into a binary tree in level order (left to right). Build the binary tree and print the inorder traversal of the tree.
+### Input Format:
+###   First line: Integer N (number of nodes)
+###   Second line: N space-separated integers
+### Output Format:
+###   A single line with the inorder traversal (space-separated)
 
-        // Create an array of size 15
-        int[] arr = new int[15];
-
-        // Constant value to fill
-        int value = 7;
-
-        // Fill first 10 elements with the value
-        Arrays.fill(arr, 0, 10, value);  // from index 0 to 9
-
-        // Display the array
-        System.out.println("Array after filling first 10 elements: " + Arrays.toString(arr));
-    }
-}
-```
-
-## Output:
-
-<img width="790" height="189" alt="image" src="https://github.com/user-attachments/assets/7b986008-2b6e-4d79-bddb-bd52d3e2a36f" />
-
-## Result:
-The program successfully fills the first 10 elements of the array with the constant value 5 using the Arrays.fill() method.
-
-## Ex14 Tracking the First Unique Number in a Stream using LinkedHashMap
-
-## AIM:
-To implement a program that tracks the first unique (non-repeating) number in a stream of integers using a LinkedHashMap.
-
-## Algorithm:
-
-1.Create a LinkedHashMap<Integer, Integer> to store each number and its frequency.
-
-2.Read a stream of integers from the user (array or until a certain count).
-
-3.For each number, update its frequency in the LinkedHashMap.
-
-4.Traverse the LinkedHashMap entries in insertion order and find the first entry whose frequency is 1.
-
-5.Display the first unique number. If none exists, print "No unique number".
-
-## Program:
+### program:
 
 ```
-/*
-Program to tracks the first unique (non-repeating) number in a stream of integers using a LinkedHashMap.
-
-*/
 import java.util.*;
 
-public class FirstUniqueNumber {
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+class Node {
+    int data;
+    Node left, right;
 
-        // Step 1: LinkedHashMap to maintain insertion order + frequency
-        LinkedHashMap<Integer, Integer> map = new LinkedHashMap<>();
-
-        System.out.print("Enter number of elements: ");
-        int n = scanner.nextInt();
-
-        System.out.println("Enter " + n + " integers:");
-
-        // Step 2 & 3: Take input & update frequency
-        for (int i = 0; i < n; i++) {
-            int num = scanner.nextInt();
-            map.put(num, map.getOrDefault(num, 0) + 1);
-        }
-
-        // Step 4: Find first unique number
-        Integer firstUnique = null;
-
-        for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
-            if (entry.getValue() == 1) {
-                firstUnique = entry.getKey();
-                break;
-            }
-        }
-
-        // Step 5: Output the result
-        if (firstUnique != null) {
-            System.out.println("First unique (non-repeating) number: " + firstUnique);
-        } else {
-            System.out.println("No unique number exists.");
-        }
-
-        scanner.close();
+    Node(int data) {
+        this.data = data;
     }
 }
+
+public class Main {
+
+    static Node buildTree(int[] arr) {
+        if (arr.length == 0) return null;
+
+        Node root = new Node(arr[0]);
+        Queue<Node> q = new LinkedList<>();
+        q.add(root);
+
+        int i = 1;
+        while (!q.isEmpty() && i < arr.length) {
+            Node curr = q.poll();
+
+            curr.left = new Node(arr[i++]);
+            q.add(curr.left);
+            if (i >= arr.length) break;
+
+            curr.right = new Node(arr[i++]);
+            q.add(curr.right);
+        }
+        return root;
+    }
+
+    static void inorder(Node root) {
+        if (root == null) return;
+        inorder(root.left);
+        System.out.print(root.data + " ");
+        inorder(root.right);
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int[] arr = new int[n];
+        for (int i = 0; i < n; i++) arr[i] = sc.nextInt();
+
+        Node root = buildTree(arr);
+        inorder(root);
+    }
+}
+
 ```
 
-## Output:
+### output:
+<img width="845" height="151" alt="image" src="https://github.com/user-attachments/assets/1b3a22a8-dd37-460f-b94e-08c0b68742b2" />
 
-<img width="767" height="563" alt="image" src="https://github.com/user-attachments/assets/c64e76a4-ba8d-4ab4-b7c9-7a47f5e9176b" />
+## A university stores student roll numbers in a system that allows efficient insertion and retrieval. Your task is to insert all student roll numbers into a Binary Search Tree and         print the inorder traversal, which will give the roll numbers in sorted order.
+### Input Format:
+###  First line: N (number of students)
+###  Second line: N integers representing student roll numbers
+### Output Format:
+###  Inorder traversal of BST (space-separated integers)
 
-## Result:
-The program successfully tracks and returns the first unique number at any point in the integer stream using a LinkedHashMap.
-
-## Ex15 Value Existence Check in a TreeMap
-
-## AIM:
-To write a Java program that checks whether a given value exists in a TreeMap.
-
-## Algorithm:
-
-1.Create a TreeMap<Integer, String> to store key–value pairs in sorted order.
-
-2.Ask the user how many entries they want to insert into the TreeMap.
-
-3.Read keys and values from the user and insert them into the TreeMap.
-
-4.Ask the user for the value they want to search.
-
-5.Use containsValue() to check if the value exists and display the result.
-
-## Program:
-
+### program:
 ```
-/*
-Program to checks whether a given value exists in a TreeMap.
-
-*/
 import java.util.*;
 
-public class TreeMapValueSearch {
+class Node {
+    int data;
+    Node left, right;
+
+    Node(int val) {
+        data = val;
+        left = right = null;
+    }
+}
+
+public class Main {
+
+    static Node insert(Node root, int val) {
+        if (root == null) return new Node(val);
+
+        if (val < root.data)
+            root.left = insert(root.left, val);
+        else
+            root.right = insert(root.right, val);
+
+        return root;
+    }
+
+    static void inorder(Node root) {
+        if (root == null) return;
+        inorder(root.left);
+        System.out.print(root.data + " ");
+        inorder(root.right);
+    }
+
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        // Step 1: Create a TreeMap
-        TreeMap<Integer, String> map = new TreeMap<>();
+        int N = sc.nextInt();
+        Node root = null;
 
-        System.out.print("Enter number of entries: ");
-        int n = sc.nextInt();
-        sc.nextLine(); // consume newline
-
-        // Step 2 & 3: Take key-value pairs from user
-        for (int i = 0; i < n; i++) {
-            System.out.print("Enter key (integer): ");
-            int key = sc.nextInt();
-            sc.nextLine();
-
-            System.out.print("Enter value (string): ");
-            String value = sc.nextLine();
-
-            map.put(key, value);
+        for (int i = 0; i < N; i++) {
+            int x = sc.nextInt();
+            root = insert(root, x);
         }
 
-        // Step 4: Ask value to search
-        System.out.print("\nEnter value to search: ");
-        String searchValue = sc.nextLine();
-
-        // Step 5: Check value exists
-        if (map.containsValue(searchValue)) {
-            System.out.println("Value \"" + searchValue + "\" exists in the TreeMap.");
-        } else {
-            System.out.println("Value \"" + searchValue + "\" does NOT exist in the TreeMap.");
-        }
-
-        sc.close();
+        inorder(root);
     }
 }
+
 ```
-## Output:
 
-<img width="970" height="664" alt="image" src="https://github.com/user-attachments/assets/cdbab398-2834-42ce-9b3e-8d24c188fd1d" />
+### output:
+<img width="645" height="137" alt="image" src="https://github.com/user-attachments/assets/ade06424-3d25-435d-948a-388696d91aa2" />
 
-## Result:
-Thus, the program successfully checks whether a specified value exists in a TreeMap using the containsValue() method.
